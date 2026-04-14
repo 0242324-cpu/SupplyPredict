@@ -1,0 +1,2 @@
+ROC_AUC,Precision,Recall,F1_Score,Train_Samples,Test_Samples,Best_Iteration
+0.7011,0.9253,1.0,0.9612,678735,169684,1

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+
+# Environment
+.env
+.env.local
+
+# Large data files - EXCEPT processed data
+data/raw/**
+!data/processed/
+data/processed/*.csv
+!data/processed/df.csv
+!data/processed/reorder_points.csv
+
+# Model files - EXCEPT FASE 2 outputs
+*.pkl
+*.joblib
+!outputs/*.pkl
+
+# Outputs - ALLOW all outputs
+!outputs/
+!outputs/**
+
+# Logs
+logs/**
+*.log
