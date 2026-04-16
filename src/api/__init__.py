@@ -1,1 +1,1 @@
-"""SupplyPredict API Package""" 
+"""SupplyPredict API Package"""

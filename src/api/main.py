@@ -92,14 +92,11 @@ async def list_products(
         if supabase is None:
             raise HTTPException(status_code=500, detail="Supabase no conectado")
 
-        # Query base
         query = supabase.table("products").select("*")
 
-        # Filtrar por clase si se proporciona
         if clase:
             query = query.eq("clase_abc", clase)
 
-        # Aplicar paginación
         response = query.range(skip, skip + limit - 1).execute()
 
         if response.data:
@@ -168,10 +165,8 @@ async def get_risk_snapshot(
         if supabase is None:
             raise HTTPException(status_code=500, detail="Supabase no conectado")
 
-        # Query base - orden por probabilidad descendente
         query = supabase.table("risk_snapshot").select("*").order("riesgo_proba", desc=True).limit(top_n)
 
-        # Filtrar por nivel de riesgo si se proporciona
         if nivel_riesgo:
             query = query.eq("nivel_riesgo", nivel_riesgo)
 
@@ -194,13 +189,8 @@ async def get_stats():
         if supabase is None:
             raise HTTPException(status_code=500, detail="Supabase no conectado")
 
-        # Contar productos totales
         products_response = supabase.table("products").select("*", count="exact").execute()
-
-        # Contar productos en riesgo (Alto)
         risk_response = supabase.table("risk_snapshot").select("*", count="exact").eq("nivel_riesgo", "Alto").execute()
-
-        # Contar forecasts
         forecasts_response = supabase.table("forecasts").select("*", count="exact").execute()
 
         return {
